@@ -12,3 +12,8 @@ body {
 body, input, button, textarea {
   font: 400 16px 'Roboto', sans-serif;
 }
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}

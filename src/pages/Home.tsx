@@ -8,17 +8,23 @@ import { useAuth } from '../hooks/useAuth'
 import { FormEvent } from 'react'
 import { useState } from 'react'
 import { database } from '../services/firebase'
+import cx from 'classnames'
 
 export function Home() {
   const history = useHistory();
-  const { signInWithGoogle, user } = useAuth();
-  const [roomCode, setRoomCoude] = useState('');
+  const { signInWithGoogle, user, logout } = useAuth();
+  const [roomCode, setRoomCode] = useState('');
 
   async function handleCreateRoom() {
     if(!user){
       await signInWithGoogle();
     }
     history.push('/rooms/new')
+  }
+
+  async function handleLogout() {
+    await logout()
+    window.location.reload()
   }
 
   async function handleJoinRoom(event: FormEvent) {
@@ -56,12 +62,19 @@ export function Home() {
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
           </button>
+          <button
+            onClick={handleLogout} className={cx(
+              'logout',
+              {hidden: !user}
+            )}>
+            Logout
+          </button>
           <div className="separator">ou entre em uma sala</div>
           <form onSubmit={handleJoinRoom}>
             <input
               type="text"
               placeholder="Digite o código da sala"
-              onChange={event => setRoomCoude(event.target.value)}
+              onChange={event => setRoomCode(event.target.value)}
               value={roomCode}
             />
             <Button type="submit">Entrar na sala</Button>

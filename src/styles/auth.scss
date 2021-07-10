@@ -33,6 +33,13 @@ aside {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  aside {
+    display: none;
+  }
+  
+}
+
 main {
   flex: 8;
 
@@ -88,7 +95,7 @@ main {
     }    
   }
   
-  .create-room {
+  .create-room, .logout {
     margin-top: 64px;
     height: 50px;
     border-radius: 8px;
@@ -112,6 +119,12 @@ main {
     &:hover {
       filter: brightness(0.9);
     }
+  }
+
+  .logout {
+    background: gray;
+    margin-top: 10px;
+    height: 25px;
   }
 
   .separator {
