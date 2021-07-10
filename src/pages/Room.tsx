@@ -1,3 +1,4 @@
+import { useHistory} from 'react-router-dom'
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router';
 import logoImg from '../assets/images/logo.svg';
@@ -14,14 +15,26 @@ type RoomParams = {
 }
 
 export function Room(){
+  const history = useHistory();
   const { signInWithGoogle, user } = useAuth();
   const [newQuestion, setNewQuestion] = useState('');
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
 
+  async function verifyRoomStatus(){
+    const roomRef = await database.ref(`rooms/${roomId}`).get()
+    if(roomRef.val().endedAt){
+      alert('Room already closed!')
+      history.push('/')
+    }
+  }
+
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
+
+    verifyRoomStatus()
+
     if(newQuestion.trim() === ''){
       return;
     }
@@ -72,8 +85,8 @@ export function Room(){
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={roomId}/>
+          <a href="/"><img src={logoImg} alt="Letmeask"/></a>
+          <RoomCode code={window.location.href.replace('admin/', '')}/>
         </div>
       </header>
       <main>

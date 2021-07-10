@@ -50,9 +50,9 @@ export function AdminRoom(){
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+        <a href="/"><img src={logoImg} alt="Letmeask" className="logo"/></a>
           <div>
-            <RoomCode code={roomId}/>
+            <RoomCode code={window.location.href.replace('admin/', '')}/>
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
           </div>
         </div>
