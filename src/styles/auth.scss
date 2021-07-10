@@ -43,10 +43,11 @@ aside {
 main {
   flex: 8;
 
-  padding: 0 32px;
+  padding: 30px 32px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   .main-content {
     display: flex;

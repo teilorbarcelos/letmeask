@@ -9,6 +9,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase';
 import '../styles/room.scss';
+import { Footer } from '../componets/Footer';
 
 type RoomParams = {
   id: string;
@@ -142,6 +143,7 @@ export function Room(){
             )
           })}
         </div>
+        <Footer/>
       </main>
     </div>
   );

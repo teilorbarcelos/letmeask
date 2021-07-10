@@ -10,6 +10,7 @@ import { useRoom } from '../hooks/useRoom';
 import '../styles/room.scss';
 import { database } from '../services/firebase';
 import { useHistory } from 'react-router-dom';
+import { Footer } from '../componets/Footer';
 
 type RoomParams = {
   id: string;
@@ -99,6 +100,7 @@ export function AdminRoom(){
             )
           })}
         </div>
+        <Footer/>
       </main>
     </div>
   );

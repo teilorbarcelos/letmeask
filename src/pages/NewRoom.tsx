@@ -7,6 +7,7 @@ import { FormEvent } from 'react'
 import { useState } from 'react'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
+import { Footer } from '../componets/Footer'
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -49,6 +50,7 @@ export function NewRoom() {
           </form>
           <p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link></p>
         </div>
+        <Footer/>
       </main>
     </div>
   )
