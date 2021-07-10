@@ -3,13 +3,13 @@ import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 import '../styles/auth.scss'
-import { Button } from '../componets/Button'
+import { Button } from '../components/Button'
 import { useAuth } from '../hooks/useAuth'
 import { FormEvent } from 'react'
 import { useState } from 'react'
 import { database } from '../services/firebase'
 import cx from 'classnames'
-import { Footer } from '../componets/Footer'
+import { Footer } from '../components/Footer'
 
 export function Home() {
   const history = useHistory();

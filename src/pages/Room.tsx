@@ -2,14 +2,14 @@ import { useHistory} from 'react-router-dom'
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router';
 import logoImg from '../assets/images/logo.svg';
-import { Button } from '../componets/Button';
-import { Question } from '../componets/Question';
-import { RoomCode } from '../componets/RoomCode';
+import { Button } from '../components/Button';
+import { Question } from '../components/Question';
+import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useAuth';
 import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase';
 import '../styles/room.scss';
-import { Footer } from '../componets/Footer';
+import { Footer } from '../components/Footer';
 
 type RoomParams = {
   id: string;

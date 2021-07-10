@@ -3,14 +3,14 @@ import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg'
 import checkImg from '../assets/images/check.svg'
 import answerImg from '../assets/images/answer.svg'
-import { Button } from '../componets/Button';
-import { Question } from '../componets/Question';
-import { RoomCode } from '../componets/RoomCode';
+import { Button } from '../components/Button';
+import { Question } from '../components/Question';
+import { RoomCode } from '../components/RoomCode';
 import { useRoom } from '../hooks/useRoom';
 import '../styles/room.scss';
 import { database } from '../services/firebase';
 import { useHistory } from 'react-router-dom';
-import { Footer } from '../componets/Footer';
+import { Footer } from '../components/Footer';
 
 type RoomParams = {
   id: string;
