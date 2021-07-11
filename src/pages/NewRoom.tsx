@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { Footer } from '../components/Footer'
+import { ActiveRooms } from '../components/ActiveRooms'
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -50,6 +51,7 @@ export function NewRoom() {
           </form>
           <p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link></p>
         </div>
+        <ActiveRooms />
         <Footer/>
       </main>
     </div>
