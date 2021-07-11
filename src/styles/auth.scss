@@ -96,7 +96,7 @@ main {
     }    
   }
   
-  .create-room, .logout {
+  .create-room {
     margin-top: 64px;
     height: 50px;
     border-radius: 8px;
@@ -120,12 +120,6 @@ main {
     &:hover {
       filter: brightness(0.9);
     }
-  }
-
-  .logout {
-    background: gray;
-    margin-top: 10px;
-    height: 25px;
   }
 
   .separator {

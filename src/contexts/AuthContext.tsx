@@ -65,6 +65,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
 
   async function logout() {
     firebase.auth().signOut();
+    setUser(undefined)
   }
   
   return (
