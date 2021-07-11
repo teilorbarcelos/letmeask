@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useRooms } from '../hooks/useRooms'
+import '../styles/activeRooms.scss'
 
 export function ActiveRooms() {
   const { user } = useAuth()
@@ -22,7 +23,7 @@ export function ActiveRooms() {
               </>
             )
           })}
-          
+
         </div>
       </div>
     )

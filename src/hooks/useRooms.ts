@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { database } from "../services/firebase";
-import { useAuth } from "./useAuth";
 
 type roomsReturn = Record<string, {
   title: String
@@ -16,7 +15,6 @@ type Rooms = {
 }
 
 export function useRooms(userId: String | undefined) {
-  const {user} = useAuth()
   const [ rooms, setRooms ] = useState<Rooms[]>([])
 
   useEffect(() => {
@@ -28,7 +26,7 @@ export function useRooms(userId: String | undefined) {
         return {
           id: key,
           name: value.title,
-          endedAt: value.endedAt,
+          endedAt: value.endedAt ?? undefined,
           authorId: value.authorId,
         }
       })

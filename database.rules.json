@@ -1,7 +1,7 @@
 {
   "rules": {
     "rooms": {
-      ".read": false,
+      ".read": true,
       ".write": "auth != null",
       "$roomId": {
         ".read": true,
