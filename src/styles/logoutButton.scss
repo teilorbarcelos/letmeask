@@ -1,0 +1,21 @@
+.logout {
+  background: gray;
+  margin-top: 10px;
+  height: 25px;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  border: 0;
+
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
