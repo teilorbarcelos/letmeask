@@ -1,4 +1,4 @@
-import { useHistory} from 'react-router-dom'
+import { Link, useHistory} from 'react-router-dom'
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router';
 import logoImg from '../assets/images/logo.svg';
@@ -86,7 +86,7 @@ export function Room(){
     <div id="page-room">
       <header>
         <div className="content">
-          <a href="/"><img src={logoImg} alt="Letmeask"/></a>
+        <Link to="/"><img src={logoImg} alt="Letmeask"/></Link>
           <RoomCode code={window.location.href.replace('admin/', '')}/>
         </div>
       </header>

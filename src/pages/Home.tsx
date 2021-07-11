@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { database } from '../services/firebase'
 import { Footer } from '../components/Footer'
 import { LogoutButton } from '../components/LogoutButton'
+import { WelcomeMsg } from '../components/WelcomeMsg'
 
 export function Home() {
   const history = useHistory();
@@ -54,6 +55,7 @@ export function Home() {
       <main>
           <div className="main-content">
             <img src={logoImg} alt="Letmeask" />
+            <WelcomeMsg />
             <button onClick={handleCreateRoom} className="create-room">
               <img src={googleIconImg} alt="Logo do Google" />
               Crie sua sala com o Google

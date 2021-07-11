@@ -9,7 +9,7 @@ import { RoomCode } from '../components/RoomCode';
 import { useRoom } from '../hooks/useRoom';
 import '../styles/room.scss';
 import { database } from '../services/firebase';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Footer } from '../components/Footer';
 
 type RoomParams = {
@@ -26,7 +26,7 @@ export function AdminRoom(){
     await database.ref(`rooms/${roomId}`).update({
       endedAt: new Date()
     })
-    history.push('/');
+    history.push('/rooms/new');
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
@@ -51,7 +51,7 @@ export function AdminRoom(){
     <div id="page-room">
       <header>
         <div className="content">
-        <a href="/"><img src={logoImg} alt="Letmeask" className="logo"/></a>
+        <Link to="/"><img src={logoImg} alt="Letmeask" className="logo"/></Link>
           <div>
             <RoomCode code={window.location.href.replace('admin/', '')}/>
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
