@@ -19,7 +19,7 @@ export function ActiveRooms() {
           {Rooms.map(room => {
             return (
               <>
-                <p><Link to={`/admin/rooms/${room.id}`}>{room.name}</Link></p>
+                <Link to={`/admin/rooms/${room.id}`}><p>{room.name}</p></Link>
               </>
             )
           })}

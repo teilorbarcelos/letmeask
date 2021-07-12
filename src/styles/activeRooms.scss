@@ -1,3 +1,30 @@
-.active-rooms-list {
-  text-align: center;
+#user-rooms {
+  margin-top: 10px;
+  h2 {
+    font-family: 'Poppins', sans-serif;
+  }
+  .active-rooms-list {
+    text-align: center;
+    border: 2px solid #835afd;
+    border-radius: 8px;
+    padding: 1rem;
+    height: max-content;
+    max-height: 150px;
+    overflow: auto;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      
+      p {
+        margin-bottom: 3px;
+        background: #835afd;
+        border-radius: 2px;
+        padding: 2px;
+        max-width: 100%;
+
+      }
+    }
+  }
 }
