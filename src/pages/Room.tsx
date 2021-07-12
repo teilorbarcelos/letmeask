@@ -1,15 +1,17 @@
 import { Link, useHistory} from 'react-router-dom'
-import { FormEvent, useState } from 'react';
-import { useParams } from 'react-router';
-import logoImg from '../assets/images/logo.svg';
-import { Button } from '../components/Button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
-import '../styles/room.scss';
-import { Footer } from '../components/Footer';
+import { FormEvent, useState } from 'react'
+import { useParams } from 'react-router'
+import logoImg from '../assets/images/logo.svg'
+import { Button } from '../components/Button'
+import { Question } from '../components/Question'
+import { RoomCode } from '../components/RoomCode'
+import { useAuth } from '../hooks/useAuth'
+import { useRoom } from '../hooks/useRoom'
+import { database } from '../services/firebase'
+import '../styles/room.scss'
+import { Footer } from '../components/Footer'
+import { VideoPlayer } from '../components/VideoPlayer'
+import { useVideoUrl } from '../hooks/useVideoUrl';
 
 type RoomParams = {
   id: string;
@@ -93,6 +95,7 @@ export function Room(){
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
+          {VideoPlayer(useVideoUrl(roomId))}
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
         </div>
         <form onSubmit={handleSendQuestion}>

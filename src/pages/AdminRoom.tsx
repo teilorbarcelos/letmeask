@@ -11,6 +11,9 @@ import '../styles/room.scss';
 import { database } from '../services/firebase';
 import { Link, useHistory } from 'react-router-dom';
 import { Footer } from '../components/Footer';
+import { VideoPlayer } from '../components/VideoPlayer';
+import { FormEvent, useState } from 'react';
+import { useVideoUrl } from '../hooks/useVideoUrl';
 
 type RoomParams = {
   id: string;
@@ -21,6 +24,7 @@ export function AdminRoom(){
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
+  const [videoUrl, setVideoUrl] = useState('')
 
   async function handleEndRoom(){
     await database.ref(`rooms/${roomId}`).update({
@@ -47,6 +51,16 @@ export function AdminRoom(){
     }
   }
 
+  async function handleVideoUrl(event: FormEvent) {
+    event.preventDefault()
+
+    if(videoUrl.trim() === ''){
+      return;
+    }
+
+    await database.ref(`rooms/${roomId}`).update({videoUrl: videoUrl})
+  }
+
   return (
     <div id="page-room">
       <header>
@@ -61,6 +75,16 @@ export function AdminRoom(){
       <main>
         <div className="room-title">
           <h1>Sala {title}</h1>
+          <form onSubmit={handleVideoUrl}>
+              <input
+                type="text"
+                placeholder="Informe o endereço do vídeo"
+                onChange={event => setVideoUrl(event.target.value)}
+                value={videoUrl}
+              />
+              <Button type="submit">Inserir/ALterar Vídeo</Button>
+            </form>
+          {VideoPlayer(useVideoUrl(roomId))}
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
         </div>
 
