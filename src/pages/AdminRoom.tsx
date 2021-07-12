@@ -55,7 +55,7 @@ export function AdminRoom(){
     event.preventDefault()
 
     if(videoUrl.trim() === ''){
-      return;
+      await database.ref(`rooms/${roomId}/videoUrl`).remove()
     }
 
     await database.ref(`rooms/${roomId}`).update({videoUrl: videoUrl})
@@ -78,11 +78,11 @@ export function AdminRoom(){
           <form onSubmit={handleVideoUrl}>
               <input
                 type="text"
-                placeholder="Informe o endereço do vídeo"
+                placeholder="Endereço do vídeo"
                 onChange={event => setVideoUrl(event.target.value)}
                 value={videoUrl}
               />
-              <Button type="submit">Inserir/ALterar Vídeo</Button>
+              <Button isOutlined type="submit">Inserir/Alterar vídeo</Button>
             </form>
           {VideoPlayer(useVideoUrl(roomId))}
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }

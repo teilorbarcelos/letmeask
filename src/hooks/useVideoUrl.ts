@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import { database } from "../services/firebase";
 
-type videoUrl = {
-  url: String | undefined
-}
-
 export function useVideoUrl(roomId: String) {
   const [ url, setUrl ] = useState('')
 

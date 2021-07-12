@@ -19,10 +19,6 @@
 
       @media only screen and (max-width: 768px) {
 
-        .logo {
-          display: none;
-        }
-
         justify-content: center;
         gap: 40px;
         
@@ -37,7 +33,7 @@
 
         @media only screen and (max-width: 768px) {
 
-          gap: 20px;
+          flex-direction: column;
           
         }
 
@@ -66,9 +62,27 @@
         color: #29292e;
       }
 
+      form {
+
+        display: flex;
+        gap: 16px;
+        margin: 10px 0 20px;
+
+        @media only screen and (max-width: 768px) {
+
+          flex-direction: column;
+          
+        }
+        
+        button {
+          height: 40px;
+        }
+      }
+
       .player-wrapper {
         position: relative;
         padding-top: 56.25%;
+        margin-bottom: 30px;
       }
 
       .video-player {
@@ -81,6 +95,7 @@
         margin-left: 16px;
         background: #e559f9;
         border-radius: 9999px;
+        max-width: max-content;
         padding: 8px 16px;
         color: #fff;
         font-weight: 500;

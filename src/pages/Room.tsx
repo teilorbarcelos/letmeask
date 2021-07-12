@@ -67,6 +67,8 @@ export function Room(){
 
   async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
 
+    verifyRoomStatus()
+
     if(!user){
       await signInWithGoogle();
     }
