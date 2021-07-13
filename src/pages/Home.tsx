@@ -11,6 +11,7 @@ import { database } from '../services/firebase'
 import { Footer } from '../components/Footer'
 import { LogoutButton } from '../components/LogoutButton'
 import { WelcomeMsg } from '../components/WelcomeMsg'
+import { SwitchButton } from '../components/SwitchButton'
 
 export function Home() {
   const history = useHistory();
@@ -53,6 +54,7 @@ export function Home() {
         <p>Tire as dúvidas da sua audiência em tempo real</p>
       </aside>
       <main>
+          <SwitchButton />
           <div className="main-content">
             <img src={logoImg} alt="Letmeask" />
             <WelcomeMsg />

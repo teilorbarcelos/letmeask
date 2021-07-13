@@ -4,9 +4,21 @@
   box-sizing: border-box;
 }
 
+html {
+  --bg: #414141;
+  --gray-border: rgb(56, 56, 56);
+  --bg-input-text: #666262;
+  --text: #fff;
+  --purple: #5439a3;
+  --purple-like: #000000;
+  --dark-gray: #2e2f30;
+}
+
 body {
-  background: #f8f8f8;
-  color: #29292e;
+  // background: #f8f8f8;
+  background: var(--bg);
+  // color: #29292e;
+  color: var(--text);
   height: 100vh;
 }
 

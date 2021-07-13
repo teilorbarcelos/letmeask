@@ -5,7 +5,8 @@
   }
   .active-rooms-list {
     text-align: center;
-    border: 2px solid #835afd;
+    // border: 2px solid #835afd;
+    border: 2px solid var(--purple);
     border-radius: 8px;
     padding: 1rem;
     height: max-content;
@@ -19,7 +20,8 @@
       
       p {
         margin-bottom: 3px;
-        background: #835afd;
+        // background: #835afd;
+        background: var(--purple);
         border-radius: 2px;
         padding: 2px;
         max-width: 100%;

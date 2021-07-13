@@ -6,7 +6,8 @@
 
 aside {
   flex: 7;
-  background: #835afd;
+  // background: #835afd;
+  background: var(--purple);
   color: #fff;
 
   display: flex;
@@ -31,13 +32,10 @@ aside {
     margin-top: 16px;
     color: #f8f8f8;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  aside {
+  
+  @media only screen and (max-width: 768px) {
     display: none;
   }
-  
 }
 
 main {
@@ -48,6 +46,11 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  #theme-switch {
+    width: 100%;
+    text-align: right;
+  }
 
   .main-content {
     display: flex;
@@ -72,8 +75,10 @@ main {
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: #fff;
+        // background: #fff;
+        background: var(--bg-input-text);
         border: 1px solid #a8a8b3;
+        color: var(--text);
       }
   
       button {
