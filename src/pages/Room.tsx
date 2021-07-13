@@ -44,25 +44,21 @@ export function Room(){
 
     if(!user){
       await signInWithGoogle();
+    }else{
+      const question = {
+        content: newQuestion,
+        author: {
+          name: user?.name,
+          avatar: user?.avatar
+        },
+        isHighlighted: false,
+        isAnswered: false
+      }
+  
+      await database.ref(`rooms/${roomId}/questions`).push(question);
+  
+      setNewQuestion('');
     }
-
-    if(!user){
-      return;
-    }
-
-    const question = {
-      content: newQuestion,
-      author: {
-        name: user?.name,
-        avatar: user?.avatar
-      },
-      isHighlighted: false,
-      isAnswered: false
-    }
-
-    await database.ref(`rooms/${roomId}/questions`).push(question);
-
-    setNewQuestion('');
   }
 
   async function handleLikeQuestion(questionId: string, likeId: string | undefined) {
@@ -71,18 +67,14 @@ export function Room(){
 
     if(!user){
       await signInWithGoogle();
-    }
-
-    if(!user){
-      return;
-    }
-
-    if(likeId){
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove();
-    }else{
-      await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
-        authorId: user?.id
-      })
+    }else {
+      if(likeId){
+        await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`).remove();
+      }else{
+        await database.ref(`rooms/${roomId}/questions/${questionId}/likes`).push({
+          authorId: user?.id
+        })
+      }
     }
   }
 

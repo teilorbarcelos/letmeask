@@ -14,6 +14,7 @@ import { Footer } from '../components/Footer';
 import { VideoPlayer } from '../components/VideoPlayer';
 import { FormEvent, useState } from 'react';
 import { useVideoUrl } from '../hooks/useVideoUrl';
+import { useAuth } from '../hooks/useAuth';
 
 type RoomParams = {
   id: string;
@@ -25,40 +26,65 @@ export function AdminRoom(){
   const roomId = params.id;
   const { title, questions, authorId } = useRoom(roomId);
   const [videoUrl, setVideoUrl] = useState('')
+  const {user} = useAuth()
+
+  async function goOut() {
+    alert('Você não é o dono desta sala, cai fora daqui!')
+    history.push(`/rooms/${roomId}`)
+  }
 
   async function handleEndRoom(){
-    await database.ref(`rooms/${roomId}`).update({
-      endedAt: new Date()
-    })
-    history.push('/rooms/new');
+    if(user?.id === authorId){
+      await database.ref(`rooms/${roomId}`).update({
+        endedAt: new Date()
+      })
+      history.push('/rooms/new');
+    }else{
+      goOut()
+    }
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
-    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isAnswered: true
-    })
+    if(user?.id === authorId){
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+        isAnswered: true
+      })
+    }else{
+      goOut()
+    }
   }
 
   async function handleHighlightQuestion(questionId: string) {
-    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isHighlighted: true
-    })
+    if(user?.id === authorId){
+      await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+        isHighlighted: true
+      })
+    }else{
+      goOut()
+    }
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if(window.confirm('Você deseja excluir esta pergunta?')){
-      await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+    if(user?.id === authorId){
+      if(window.confirm('Você deseja excluir esta pergunta?')){
+        await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+      }
+    }else{
+      goOut()
     }
   }
 
   async function handleVideoUrl(event: FormEvent) {
     event.preventDefault()
 
-    if(videoUrl.trim() === ''){
-      await database.ref(`rooms/${roomId}/videoUrl`).remove()
+    if(user?.id === authorId){
+      if(videoUrl.trim() === ''){
+        await database.ref(`rooms/${roomId}/videoUrl`).remove()
+      }
+      await database.ref(`rooms/${roomId}`).update({videoUrl: videoUrl})
+    }else{
+      goOut()
     }
-
-    await database.ref(`rooms/${roomId}`).update({videoUrl: videoUrl})
   }
 
   return (

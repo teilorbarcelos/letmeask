@@ -11,28 +11,28 @@ import { Footer } from '../components/Footer'
 import { ActiveRooms } from '../components/ActiveRooms'
 
 export function NewRoom() {
-  const { user } = useAuth();
+  const { signInWithGoogle, user} = useAuth();
   const history = useHistory();
   const [newRoom, setNewRoom] =useState('');
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
 
-    if(!user){
-      history.push("/")
-    }
-
     if(newRoom.trim() === ''){
       alert('Insert a valid name to the room!')
       return;
     }
 
-    const roomRef = database.ref('rooms');
-    const firebaseRoom = await roomRef.push({
-      title: newRoom,
-      authorId: user?.id
-    })
-    history.push(`/admin/rooms/${firebaseRoom.key}`)
+    if(!user){
+      await signInWithGoogle()
+    }else{
+      const roomRef = database.ref('rooms');
+      const firebaseRoom = await roomRef.push({
+        title: newRoom,
+        authorId: user?.id
+      })
+      history.push(`/admin/rooms/${firebaseRoom.key}`)
+    }
   }
 
   return (
@@ -62,4 +62,8 @@ export function NewRoom() {
       </main>
     </div>
   )
+}
+
+function signInWithGoogle() {
+  throw new Error('Function not implemented.')
 }
