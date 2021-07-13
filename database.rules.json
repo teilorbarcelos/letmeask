@@ -6,6 +6,10 @@
       "$roomId": {
         ".read": true,
         ".write": "auth != null && (!data.exists() || data.child('authorId').val() == auth.uid)",
+        "videoUrl": {
+          ".read": true,
+          ".write": "auth != null && (!data.exists() || data.parent().child('authorId').val() == auth.uid)"
+        },
         "questions": {
           ".read": true,
           ".write": "auth != null && (!data.exists() || data.parent().child('authorId').val() == auth.uid)",

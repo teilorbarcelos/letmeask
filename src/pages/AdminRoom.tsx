@@ -23,7 +23,7 @@ export function AdminRoom(){
   const history = useHistory();
   const params = useParams<RoomParams>();
   const roomId = params.id;
-  const { title, questions } = useRoom(roomId);
+  const { title, questions, authorId } = useRoom(roomId);
   const [videoUrl, setVideoUrl] = useState('')
 
   async function handleEndRoom(){

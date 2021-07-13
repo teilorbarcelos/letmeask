@@ -17,7 +17,13 @@ export function NewRoom() {
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
+
+    if(!user){
+      history.push("/")
+    }
+
     if(newRoom.trim() === ''){
+      alert('Insert a valid name to the room!')
       return;
     }
 
