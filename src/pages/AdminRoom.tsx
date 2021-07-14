@@ -15,6 +15,7 @@ import { VideoPlayer } from '../components/VideoPlayer';
 import { FormEvent, useState } from 'react';
 import { useVideoUrl } from '../hooks/useVideoUrl';
 import { useAuth } from '../hooks/useAuth';
+import { useTheme } from '../hooks/useTheme';
 
 type RoomParams = {
   id: string;
@@ -27,6 +28,8 @@ export function AdminRoom(){
   const { title, questions, authorId } = useRoom(roomId);
   const [videoUrl, setVideoUrl] = useState('')
   const {user} = useAuth()
+
+  useTheme()
 
   async function goOut() {
     alert('Você não é o dono desta sala, cai fora daqui!')

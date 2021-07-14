@@ -9,11 +9,14 @@ import { database } from '../services/firebase'
 import { useAuth } from '../hooks/useAuth'
 import { Footer } from '../components/Footer'
 import { ActiveRooms } from '../components/ActiveRooms'
+import { useTheme } from '../hooks/useTheme'
 
 export function NewRoom() {
   const { signInWithGoogle, user} = useAuth();
   const history = useHistory();
   const [newRoom, setNewRoom] =useState('');
+
+  useTheme()
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault();
@@ -62,8 +65,4 @@ export function NewRoom() {
       </main>
     </div>
   )
-}
-
-function signInWithGoogle() {
-  throw new Error('Function not implemented.')
 }

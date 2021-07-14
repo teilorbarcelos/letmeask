@@ -12,6 +12,7 @@ import '../styles/room.scss'
 import { Footer } from '../components/Footer'
 import { VideoPlayer } from '../components/VideoPlayer'
 import { useVideoUrl } from '../hooks/useVideoUrl';
+import { useTheme } from '../hooks/useTheme'
 
 type RoomParams = {
   id: string;
@@ -24,6 +25,8 @@ export function Room(){
   const params = useParams<RoomParams>();
   const roomId = params.id;
   const { title, questions } = useRoom(roomId);
+
+  useTheme()
 
   async function verifyRoomStatus(){
     const roomRef = await database.ref(`rooms/${roomId}`).get()
