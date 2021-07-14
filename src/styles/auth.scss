@@ -1,7 +1,13 @@
 #page-auth {
   display: flex;
   align-items: stretch;
-  height: 100vh;
+
+  @media only screen and (min-width: 768px) {
+
+    height: 100vh;
+    
+  }
+
 }
 
 aside {

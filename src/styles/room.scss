@@ -32,7 +32,7 @@
         display: flex;
         gap: 16px;
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: 700px) {
 
           flex-direction: column;
           
@@ -80,7 +80,7 @@
           color: var(--text);
         }
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: 700px) {
 
           flex-direction: column;
           
