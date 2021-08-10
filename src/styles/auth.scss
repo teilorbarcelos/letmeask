@@ -23,10 +23,12 @@ aside {
   padding: 120px 80px;
 
   svg {
+    // border: #ea4335 solid 1px;
+    margin: 0 auto;
+    width: 320px;
     #purple{
       fill: var(--purple);
     }
-    max-width: 320px;
   }
 
   strong {

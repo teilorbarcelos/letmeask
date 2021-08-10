@@ -1,5 +1,5 @@
 import { Link, useHistory } from 'react-router-dom'
-import illustrationImg from '../assets/images/illustration.svg'
+// import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import '../styles/auth.scss'
 import { Button } from '../components/Button'
@@ -10,6 +10,7 @@ import { useAuth } from '../hooks/useAuth'
 import { Footer } from '../components/Footer'
 import { ActiveRooms } from '../components/ActiveRooms'
 import { useTheme } from '../hooks/useTheme'
+import { Illustration } from '../components/svg/Illustration'
 
 export function NewRoom() {
   const { signInWithGoogle, user} = useAuth();
@@ -41,7 +42,10 @@ export function NewRoom() {
   return (
     <div id="page-auth">
       <aside>
-        <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
+
+        <Illustration />
+
+        {/* <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" /> */}
         <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tire as dúvidas da sua audiência em tempo real</p>
       </aside>
@@ -58,7 +62,8 @@ export function NewRoom() {
             />
             <Button type="submit">Criar sala</Button>
           </form>
-          <p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link></p>
+          {/* <p>Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link></p> */}
+          <p><Link to="/">Voltar para a página inicial.</Link></p>
         </div>
         <ActiveRooms />
         <Footer/>
