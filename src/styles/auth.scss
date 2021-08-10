@@ -22,7 +22,10 @@ aside {
 
   padding: 120px 80px;
 
-  img {
+  svg {
+    #purple{
+      fill: var(--purple);
+    }
     max-width: 320px;
   }
 
