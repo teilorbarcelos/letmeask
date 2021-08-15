@@ -1,4 +1,4 @@
-![Printscreen of the project](https://teilorwebdev.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fletmeask.1b259c5a87998ac209ff9e69628d9ad6.png&w=1920&q=75)
+![Printscreen of the project](https://teilorwebdev.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fletmeask.9529abdc89321b62009574c1334b9fc5.png&w=1920&q=75)
  
 ## Letmeask
  
